@@ -7,6 +7,9 @@ while (true)
 {
     Console.Write("Enter 'F' to fetch, 'E' for Editing list, 'Q' for Quit: ");
     var input = Console.ReadLine();
+
+    // Fetched data and printed list according to user input using conditional statements. 
+
     if (input.ToString().ToLower().Equals("f"))
     {
         Console.Write("Type 'Income/Expenses' and enter to filter and print data or enter for all: ");
@@ -136,6 +139,7 @@ while (true)
 // Created one base class and two child classes.
 class Account
 {
+
     public int Id { get; set; }
     public string Type { get; set; }
     public string Title { get; set; }
@@ -145,6 +149,7 @@ class Account
 
 class Income : Account
 {
+
     public Income(int id, string type, string title, int amount, DateTime date)
     {
         Id = id;
@@ -171,6 +176,8 @@ class Expenses : Account
 class ProcessTransactionDetails
 {
     const string fileName = "MoneyTracking1.txt";
+
+    // Method to read data from file
     public List<Account> readDataFromFile()
     {
         List<Account> accountList = new List<Account>();
@@ -197,6 +204,8 @@ class ProcessTransactionDetails
         return accountList;
 
     }
+
+    // Method to write data to file
     public void writeDataToFile(List<Account> accountList)
     {
 
@@ -212,6 +221,8 @@ class ProcessTransactionDetails
         }
 
     }
+
+    // Method for editing the account, adding new account and deleting existing account in accountlist
 
     public void editList(List<Account> accountList, Account editAccount)
     {
@@ -240,7 +251,7 @@ class ProcessTransactionDetails
 
         Console.WriteLine();
 
-
+        // Fetched data using loop over accountList based on user input
         foreach (var account in accountList)
         {
             if (input.ToLower().Trim() == "expenses")
@@ -268,59 +279,3 @@ class ProcessTransactionDetails
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-details = details.OrderBy(detail => detail.Amount).ToList();
-
-
-foreach (var detail in details)
-{
-    if (input.ToLower().Trim() == "expenses")
-    {
-        if (detail.Type == "MonthlyExpense")
-        {
-            
-            Console.WriteLine(detail.SerialNo.ToString().PadRight(15) + detail.Type.PadRight(20) + detail.Title.PadRight(15) + detail.Amount.ToString().PadRight(15) + detail.Date.Month);
-          
-        }
-    }
-    else if (input.ToLower().Trim() == "income")
-    {
-        if (detail.Type == "MonthlyIncome")
-        {
-            Console.WriteLine(detail.SerialNo.ToString().PadRight(15) + detail.Type.PadRight(20) + detail.Title.PadRight(15) + detail.Amount.ToString().PadRight(15) + detail.Date.Month);
-        }
-    }
-    else
-    {
-        Console.WriteLine(detail.SerialNo.ToString().PadRight(15) + detail.Type.PadRight(20) + detail.Title.PadRight(15) + detail.Amount.ToString().PadRight(15) + detail.Date.Month);
-    }
-}
-*/
